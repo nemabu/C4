@@ -1,0 +1,7 @@
+name: C4
+version: 1.0.0
+author: nemabu
+main: main.C4
+commands:
+  C4:
+    description: C4 command
