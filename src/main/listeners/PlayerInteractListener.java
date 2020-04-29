@@ -84,6 +84,7 @@ public class PlayerInteractListener implements Listener {
     }
 
     public void openInventory(Player player) {
+        String detonateAllTNTInventoryDisplayName = mainClass.getConfig().getString("detonateAllTNTInventoryDisplayName");
 
         // for (Player findPlayer : Bukkit.getOnlinePlayers()) { //Loop through inline players instead
         //  if (player.getName().equals(findPlayer.getName())) { //Find matching player online
@@ -184,9 +185,32 @@ public class PlayerInteractListener implements Listener {
                 Material detonateAllMaterial = Material.matchMaterial(mainClass.getConfig().getString("detonateAllMaterial"));
                 ItemStack allTNT = new ItemStack(detonateAllMaterial);
                 ItemMeta allTNTMeta = firstTNT.getItemMeta();
-                allTNTMeta.setDisplayName("Detonate all TNT");
+                allTNTMeta.setDisplayName(detonateAllTNTInventoryDisplayName);
                 allTNT.setItemMeta(allTNTMeta);
 
+                //May replace switch statement
+                ArrayList<ItemStack> inventoryTNTs = new ArrayList<ItemStack>();
+                inventoryTNTs.add(firstTNT);
+                inventoryTNTs.add(secondTNT);
+                inventoryTNTs.add(thirdTNT);
+                inventoryTNTs.add(fourthTNT);
+                inventoryTNTs.add(fifthTNT);
+                inventoryTNTs.add(sixthTNT);
+                inventoryTNTs.add(seventhTNT);
+                inventoryTNTs.add(eigthTNT);
+
+                for (int i = 0; i < amountOfTNT; i++) {
+                    inventory.setItem(i, inventoryTNTs.get(i));
+                }
+
+                if (amountOfTNT > 0) {
+                    inventory.setItem(8, allTNT);
+                }
+
+
+
+
+                /*
                 switch (amountOfTNT) {
                     case 1:
                         inventory.setItem(0, firstTNT);
@@ -252,6 +276,8 @@ public class PlayerInteractListener implements Listener {
                     default:
                         break;
                 }
+
+                 */
 
                 player.updateInventory();
                 player.openInventory(inventory);

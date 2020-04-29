@@ -40,6 +40,7 @@ public class C4 extends JavaPlugin {
         getConfig().addDefault("detonateAllMaterial", "TNT"); //material to detonate all tnt (in inventory)
         getConfig().addDefault("outOfRangeSingleDetonation", "You are out of range of the C4."); //message sent when player is out of range of a C4
         getConfig().addDefault("outOfRangeMultipleDetonation", "C4 is out of range at location: ");
+        getConfig().addDefault("detonateAllTNTInventoryDisplayName", "Detonate all TNT");
 
         getConfig().options().copyDefaults(true);
         saveConfig();
