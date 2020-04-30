@@ -1,7 +1,9 @@
 package main.commands;
 
+import main.C4;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -16,6 +18,11 @@ import java.util.Map;
 import java.util.UUID;
 
 public class C4Command implements CommandExecutor {
+    C4 mainClass;
+
+    public C4Command(C4 mainClass) {
+        this.mainClass = mainClass;
+    }
 
     @Override
     public boolean onCommand(CommandSender s, Command cmd, String label, String[] args) {
@@ -60,8 +67,10 @@ public class C4Command implements CommandExecutor {
 
             }
 
-        }
-        if (args.length == 1) {
+        } else if (args.length == 3 && !player.isOp()){
+            player.sendMessage(ChatColor.DARK_RED + "You do not have permission to run this command.");
+
+        } else if (args.length == 1) {
             if (args[0].equals("check")) {
 
                 for (Map.Entry<UUID, ArrayList<String>> entry : main.C4.mapOfC4.entrySet()) {
@@ -73,6 +82,12 @@ public class C4Command implements CommandExecutor {
 
             }
 
+        } else if (args.length == 0) {
+            String c4PluginInfo = mainClass.getConfig().getString("c4PluginInfo");
+            player.sendMessage(ChatColor.RED + c4PluginInfo);
+            return true;
+        } else {
+            return false;
         }
 
         return false;

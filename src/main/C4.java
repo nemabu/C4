@@ -34,6 +34,7 @@ public class C4 extends JavaPlugin {
 
 
         this.saveDefaultConfig();
+        getConfig().addDefault("c4PluginInfo", "C4 is a plugin that allows you to place C4 and detonate from a distance."); // /C4
         getConfig().addDefault("radius", 5); //maximum radius to use a c4
         getConfig().addDefault("c4Placed", "C4 Placed!");
         getConfig().addDefault("maxC4Placed", "Maximum C4 already placed!");
@@ -57,7 +58,7 @@ public class C4 extends JavaPlugin {
             e.printStackTrace();
         }
 
-        this.getCommand("c4").setExecutor(new C4Command());
+        this.getCommand("c4").setExecutor(new C4Command(this));
         getServer().getPluginManager().registerEvents(new PlayerLoginListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerInteractListener(this), this);
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);

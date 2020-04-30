@@ -40,7 +40,7 @@ public class BlockPlaceListener implements Listener {
 
                 for (Map.Entry<UUID, ArrayList<String>> entry : main.C4.mapOfC4.entrySet()) {
                     if (main.C4.getPlayerFromUUID(entry.getKey()).getName().equals(player.getName())) { //Find player who placed TNT in hashmap
-                        if (entry.getValue().size() < 8) { //If they have less than 5 stored locations to their name
+                        if (entry.getValue().size() < 8) { //If they have less than 8 stored locations to their name
                             Location tntLocation = event.getBlock().getLocation();
                             main.C4.addTNTLocation(tntLocation, player); //Add TNT location to their arraylist in the hashmap
                             player.sendMessage(ChatColor.RED + c4Placed);
