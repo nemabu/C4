@@ -89,7 +89,7 @@ public class PlayerInteractListener implements Listener {
         // for (Player findPlayer : Bukkit.getOnlinePlayers()) { //Loop through inline players instead
         //  if (player.getName().equals(findPlayer.getName())) { //Find matching player online
         for (Map.Entry<UUID, ArrayList<String>> entry : main.C4.mapOfC4.entrySet()) {
-            if (player.getName().equals(main.C4.getPlayerFromUUID(entry.getKey()).getName())) {
+            if (player.getName().equals(Bukkit.getPlayer(entry.getKey()).getName())) {
 
                 int amountOfTNT = entry.getValue().size();
 

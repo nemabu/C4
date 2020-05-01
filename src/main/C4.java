@@ -87,7 +87,7 @@ public class C4 extends JavaPlugin {
 
         for (Map.Entry<UUID, ArrayList<String>> entry : mapOfC4.entrySet()) {
 
-            if (player.getName().equals(getPlayerFromUUID(entry.getKey()).getName())) { //Find player in hashmap
+            if (player.getName().equals(Bukkit.getPlayer(entry.getKey()).getName())) { //Find player in hashmap
                 entry.getValue().add(getStringFromLocation(location)); //Add location from parameter to the arraylist corresponding to the found player
             }
 
@@ -98,7 +98,7 @@ public class C4 extends JavaPlugin {
     public static void removeTNTLocation(Location location, Player player) {
 
         for (Map.Entry<UUID, ArrayList<String>> entry : mapOfC4.entrySet()) {
-            if (getPlayerFromUUID(entry.getKey()).getName().equals(player.getName())) { //Find player in hashmap
+            if (Bukkit.getPlayer(entry.getKey()).getName().equals(player.getName())) { //Find player in hashmap
 
                 for (int i = 0; i < entry.getValue().size(); i++) { //Loop through the TNT locations corresponding to their name
 
@@ -139,19 +139,6 @@ public class C4 extends JavaPlugin {
 
     public static void addPlayer(UUID uuid) {
         mapOfC4.put(uuid, new ArrayList<>());
-    }
-
-    public static Player getPlayerFromUUID(UUID uuid) {
-
-        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-
-            if (uuid.equals(player.getUniqueId())) {
-                return player;
-            }
-
-        }
-
-        return null;
     }
 
     public static UUID getUUIDFromPlayer(Player player) {

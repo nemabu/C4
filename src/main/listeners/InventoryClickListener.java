@@ -1,6 +1,7 @@
 package main.listeners;
 
 import main.C4;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -35,7 +36,7 @@ public class InventoryClickListener implements Listener {
             int whichTNT = event.getRawSlot();
 
             for (Map.Entry<UUID, ArrayList<String>> entry : main.C4.mapOfC4.entrySet()) {
-                if (main.C4.getPlayerFromUUID(entry.getKey()).getName().equals(player.getName())) {
+                if (Bukkit.getPlayer(entry.getKey()).getName().equals(player.getName())) { //Test
 
                     if (whichTNT != 8) {
                         try {

@@ -17,14 +17,9 @@ public class PlayerLoginListener implements Listener {
 
         boolean playerAlreadyOnHashMap = false;
         for (Map.Entry<UUID, ArrayList<String>> entry : main.C4.mapOfC4.entrySet()) {
-            try {
                 if (player.getUniqueId().equals(entry.getKey())) {
                     playerAlreadyOnHashMap = true;
-
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
 
         }
 
