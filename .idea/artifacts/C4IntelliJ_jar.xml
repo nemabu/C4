@@ -2,7 +2,7 @@
   <artifact type="jar" name="C4IntelliJ:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/C4IntelliJ_jar</output-path>
     <root id="archive" name="C4.jar">
-      <element id="module-output" name="C4IntelliJ" />
+      <element id="module-output" name="C4" />
     </root>
   </artifact>
 </component>
