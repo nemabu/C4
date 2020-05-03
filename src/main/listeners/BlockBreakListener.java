@@ -1,9 +1,9 @@
 package main.listeners;
 
-import net.minecraft.server.v1_8_R3.NBTTagCompound;
+import net.minecraft.server.v1_15_R1.NBTTagCompound;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -37,7 +37,7 @@ public class BlockBreakListener implements Listener {
                         meta.setDisplayName("C4");
                         brokenItem.setItemMeta(meta);
 
-                        net.minecraft.server.v1_8_R3.ItemStack nmsItem = CraftItemStack.asNMSCopy(brokenItem);
+                        net.minecraft.server.v1_15_R1.ItemStack nmsItem = CraftItemStack.asNMSCopy(brokenItem);
                         NBTTagCompound tag = nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound();
 
                         tag.setBoolean("isC4", true);

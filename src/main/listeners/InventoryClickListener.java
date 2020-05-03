@@ -31,7 +31,7 @@ public class InventoryClickListener implements Listener {
         String outOfRangeMultipleDetonation = mainClass.getConfig().getString("outOfRangeMultipleDetonation");
 
         Player player = (Player) event.getWhoClicked();
-        if (event.getInventory().getTitle().equals("C4 Detonator")) {
+        if (event.getView().getTitle().equals("C4 Detonator")) {
             event.setCancelled(true);
             int whichTNT = event.getRawSlot();
 

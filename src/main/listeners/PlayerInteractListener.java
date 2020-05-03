@@ -36,58 +36,12 @@ public class PlayerInteractListener implements Listener {
 
         }
 
-        /* if (event.getClickedBlock().getType().equals(Material.LEVER)) {
-            if (event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
-                Location leverLocation = event.getClickedBlock().getLocation();
 
-                double leverLocationX = leverLocation.getX();
-                double leverLocationY = leverLocation.getY();
-                double leverLocationZ = leverLocation.getZ();
-
-                for (double x = (leverLocationX - radius); x <= (leverLocationX + radius); x++) {
-
-                    for (double y = (leverLocationY - radius); y <= (leverLocationY + radius); y++) {
-
-                        for (double z = (leverLocationZ - radius); z <= (leverLocationZ + radius); z++) {
-
-                            Location currentLocation = new Location(event.getPlayer().getWorld(), x, y, z); //Current location in triple loop
-
-                            for (Map.Entry<Player, ArrayList<Location>> entry : main.C4.mapOfC4.entrySet()) {
-
-                                if (entry.getKey().getName().equals(event.getPlayer().getName())) {
-
-                                    for (int i = 0; i < entry.getValue().size(); i++) {
-
-                                        if (entry.getValue().get(i).equals(currentLocation)) {
-
-                                            if (currentLocation.getBlock().getType().equals(Material.TNT)) { //Needed?
-                                                currentLocation.getBlock().setType(Material.AIR);
-                                            }
-
-                                        }
-
-                                    }
-
-                                }
-
-                            }
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-        } */
     }
-
+    
     public void openInventory(Player player) {
-        String detonateAllTNTInventoryDisplayName = mainClass.getConfig().getString("detonateAllTNTInventoryDisplayName");
+        String detonateAllC4InventoryDisplayName = mainClass.getConfig().getString("detonateAllC4InventoryDisplayName");
 
-        // for (Player findPlayer : Bukkit.getOnlinePlayers()) { //Loop through inline players instead
-        //  if (player.getName().equals(findPlayer.getName())) { //Find matching player online
         for (Map.Entry<UUID, ArrayList<String>> entry : main.C4.mapOfC4.entrySet()) {
             if (player.getName().equals(Bukkit.getPlayer(entry.getKey()).getName())) {
 
@@ -179,16 +133,13 @@ public class PlayerInteractListener implements Listener {
                     eigthTNTMeta.setDisplayName("null");
 
                 }
-
-
-
+                
                 Material detonateAllMaterial = Material.matchMaterial(mainClass.getConfig().getString("detonateAllMaterial"));
                 ItemStack allTNT = new ItemStack(detonateAllMaterial);
                 ItemMeta allTNTMeta = firstTNT.getItemMeta();
-                allTNTMeta.setDisplayName(detonateAllTNTInventoryDisplayName);
+                allTNTMeta.setDisplayName(detonateAllC4InventoryDisplayName);
                 allTNT.setItemMeta(allTNTMeta);
 
-                //May replace switch statement
                 ArrayList<ItemStack> inventoryTNTs = new ArrayList<ItemStack>();
                 inventoryTNTs.add(firstTNT);
                 inventoryTNTs.add(secondTNT);
@@ -206,78 +157,6 @@ public class PlayerInteractListener implements Listener {
                 if (amountOfTNT > 0) {
                     inventory.setItem(8, allTNT);
                 }
-
-
-
-
-                /*
-                switch (amountOfTNT) {
-                    case 1:
-                        inventory.setItem(0, firstTNT);
-                        inventory.setItem(8, allTNT);
-                        break;
-                    case 2:
-                        inventory.setItem(0, firstTNT);
-                        inventory.setItem(1, secondTNT);
-                        inventory.setItem(8, allTNT);
-                        break;
-                    case 3:
-                        inventory.setItem(0, firstTNT);
-                        inventory.setItem(1, secondTNT);
-                        inventory.setItem(2, thirdTNT);
-                        inventory.setItem(8, allTNT);
-                        break;
-                    case 4:
-                        inventory.setItem(0, firstTNT);
-                        inventory.setItem(1, secondTNT);
-                        inventory.setItem(2, thirdTNT);
-                        inventory.setItem(3, fourthTNT);
-                        inventory.setItem(8, allTNT);
-                        break;
-                    case 5:
-                        inventory.setItem(0, firstTNT);
-                        inventory.setItem(1, secondTNT);
-                        inventory.setItem(2, thirdTNT);
-                        inventory.setItem(3, fourthTNT);
-                        inventory.setItem(4, fifthTNT);
-                        inventory.setItem(8, allTNT);
-                        break;
-                    case 6:
-                        inventory.setItem(0, firstTNT);
-                        inventory.setItem(1, secondTNT);
-                        inventory.setItem(2, thirdTNT);
-                        inventory.setItem(3, fourthTNT);
-                        inventory.setItem(4, fifthTNT);
-                        inventory.setItem(5, sixthTNT);
-                        inventory.setItem(8, allTNT);
-                        break;
-                    case 7:
-                        inventory.setItem(0, firstTNT);
-                        inventory.setItem(1, secondTNT);
-                        inventory.setItem(2, thirdTNT);
-                        inventory.setItem(3, fourthTNT);
-                        inventory.setItem(4, fifthTNT);
-                        inventory.setItem(5, sixthTNT);
-                        inventory.setItem(6, seventhTNT);
-                        inventory.setItem(8, allTNT);
-                        break;
-                    case 8:
-                        inventory.setItem(0, firstTNT);
-                        inventory.setItem(1, secondTNT);
-                        inventory.setItem(2, thirdTNT);
-                        inventory.setItem(3, fourthTNT);
-                        inventory.setItem(4, fifthTNT);
-                        inventory.setItem(5, sixthTNT);
-                        inventory.setItem(6, seventhTNT);
-                        inventory.setItem(7, eigthTNT);
-                        inventory.setItem(8, allTNT);
-                        break;
-
-                    default:
-                        break;
-                }
-
-                 */
 
                 player.updateInventory();
                 player.openInventory(inventory);
